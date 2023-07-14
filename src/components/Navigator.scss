@@ -30,11 +30,20 @@
             position: absolute;
             padding: 0;
             .menu {
-                width: 205px;
+                width: 100%;
                 padding: 0 15px;
                 height: 35px;
                 line-height: 35px;
                 text-transform: none;
+
+                &.active {
+                    a {
+                        color: orange !important;
+                    }
+
+                    background-color: #ededed;
+                }
+
                 .menu-link {
                     text-decoration: none;
                     color: $text-in-light;
@@ -48,6 +57,7 @@
                     top: 0;
                     left: 205px;
                     padding: 0;
+
                     .sub-menu {
                         padding: 0 15px;
                         height: 35px;
