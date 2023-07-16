@@ -7,6 +7,7 @@ import { LANGUAGES } from '../../utils'
 import { withRouter } from 'react-router';
 import { changeLanguageApp } from '../../store/actions';
 import { Link } from 'react-scroll'
+import { Container } from 'reactstrap';
 
 const HomeHeader = (props) => {
   const changeLanguage = (language) => {
@@ -20,53 +21,54 @@ const HomeHeader = (props) => {
   let language = props.language
 
   return (
-    <React.Fragment>
-    <div className="home-header-container">
-      <div className="home-header-content">
-        <div className="left-content">
-          <i className="fas fa-bars"></i>
-          <div className="header-logo" onClick={() => returnToHome()}>
-            <img src={logo} />
-            <span>
-              DOCTOR HÒA
-            </span>
+    <>
+    
+      <div className="home-header-container">
+        <Container className="home-header-content">
+          <div className="left-content">
+            {/* <i className="fas fa-bars"></i> */}
+            <div className="header-logo" onClick={() => returnToHome()}>
+              <img src={logo} />
+              <span>
+                DOCTOR HÒA
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="center-content">
-          <a className="child-content" href="#specialty">
-            <div>
-              <b><FormattedMessage id="home-header.speciality"/></b>
+          <div className="center-content">
+            <a className="child-content" href="#specialty">
+              <div>
+                <b><FormattedMessage id="home-header.speciality"/></b>
+              </div>
+              <div className="subs-title"><FormattedMessage id="home-header.searchdoctor"/></div>
+            </a>
+            <a className="child-content" href="#clinic">
+              <div>
+                <b><FormattedMessage id="home-header.health-facility"/></b>
+              </div>
+              <div className="subs-title"><FormattedMessage id="home-header.select-room"/></div>
+            </a>
+            <a className="child-content" href="#doctor">
+              <div>
+                <b><FormattedMessage id="home-header.doctor"/></b>
+              </div>
+              <div className="subs-title"><FormattedMessage id="home-header.select-doctor"/></div>
+            </a>
+            <div className="child-content">
+              <div>
+                <b><FormattedMessage id="home-header.fee"/></b>
+              </div>
+              <div className="subs-title"><FormattedMessage id="home-header.check-health"/></div>
             </div>
-            <div className="subs-title"><FormattedMessage id="home-header.searchdoctor"/></div>
-          </a>
-          <a className="child-content" href="#clinic">
-            <div>
-              <b><FormattedMessage id="home-header.health-facility"/></b>
-            </div>
-            <div className="subs-title"><FormattedMessage id="home-header.select-room"/></div>
-          </a>
-          <a className="child-content" href="#doctor">
-            <div>
-              <b><FormattedMessage id="home-header.doctor"/></b>
-            </div>
-            <div className="subs-title"><FormattedMessage id="home-header.select-doctor"/></div>
-          </a>
-          <div className="child-content">
-            <div>
-              <b><FormattedMessage id="home-header.fee"/></b>
-            </div>
-            <div className="subs-title"><FormattedMessage id="home-header.check-health"/></div>
           </div>
-        </div>
-        <div className="right-content">
-          <div className="support">
-            <i className="far fa-question-circle"></i><FormattedMessage id="home-header.support"/>
+          <div className="right-content">
+            <div className="support">
+              <i className="far fa-question-circle"></i><FormattedMessage id="home-header.support"/>
+            </div>
+            <div className={language === LANGUAGES.VI ? "language-vi active" : "language-vi"}><span onClick={() => changeLanguage(LANGUAGES.VI)}>VN</span></div>
+            <div  className={language === LANGUAGES.EN ? "language-en active" : "language-en"}><span onClick={() => changeLanguage(LANGUAGES.EN)}>EN</span></div>
           </div>
-          <div className={language === LANGUAGES.VI ? "language-vi active" : "language-vi"}><span onClick={() => changeLanguage(LANGUAGES.VI)}>VN</span></div>
-          <div  className={language === LANGUAGES.EN ? "language-en active" : "language-en"}><span onClick={() => changeLanguage(LANGUAGES.EN)}>EN</span></div>
-        </div>
+        </Container>
       </div>
-    </div>
     {props.isShowBanner === true &&
     <div className="home-header-banner">
       <div className="content-up">
@@ -107,7 +109,7 @@ const HomeHeader = (props) => {
       </div>
     </div>
     }
-  </React.Fragment>
+  </>
   )
 }
 

@@ -74,3 +74,48 @@
         padding: 10px 100px;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .doctor-detail-container {
+        .intro-doctor {
+            padding: 0 8px;
+
+            .content-left {
+                width: 68px;
+                height: 68px;
+                margin: 0;
+            }
+        }
+
+        .schedule-doctor {
+            margin: 0 12px;
+            flex-direction: column;
+
+            .content-left {
+                width: 100%;
+                border-right: none;
+
+                .doctor-schedule-container {
+                    .time-content {
+                        .time-content-btns {
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+
+            .content-right {
+                width: 100%;
+            }
+        }
+
+        .detail-infor-doctor {
+            padding: 0 8px;
+        }
+
+        .comment-doctor {
+            padding: 0;
+        }
+    }
+
+}

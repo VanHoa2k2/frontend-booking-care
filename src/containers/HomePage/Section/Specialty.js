@@ -27,13 +27,30 @@ const Specialty = (props) => {
 
   return (
     <section className="section-share section-specialty" id="specialty">
-      <div className="section-container">
+      <div className="section-container pc">
         <div className="section-header">
           <span className="title-section"><FormattedMessage id="homepage.specialty-popular" /></span>
           <button className="btn-section"><FormattedMessage id="homepage.more-info" /></button>
         </div>
         <div className="section-body">
           <Slider {...props.settings}>
+            {dataSpecialty && dataSpecialty.length > 0 && dataSpecialty.map((item,i) => (
+            <div className="section-customize specialty-child" key={i}  onClick={() => handleViewDetailSpecialty(item)}>
+              <div className="bg-img section-specialty" style={{ backgroundImage: `url(${item.image})`}} />
+              <div className="specialty-name">{item.name}</div>
+            </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
+
+      <div className="section-container mobile">
+        <div className="section-header">
+          <span className="title-section"><FormattedMessage id="homepage.specialty-popular" /></span>
+          <button className="btn-section"><FormattedMessage id="homepage.more-info" /></button>
+        </div>
+        <div className="section-body">
+          <Slider {...props.settingsMobile}>
             {dataSpecialty && dataSpecialty.length > 0 && dataSpecialty.map((item,i) => (
             <div className="section-customize specialty-child" key={i}  onClick={() => handleViewDetailSpecialty(item)}>
               <div className="bg-img section-specialty" style={{ backgroundImage: `url(${item.image})`}} />

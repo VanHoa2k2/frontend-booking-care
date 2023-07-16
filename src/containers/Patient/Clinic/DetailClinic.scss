@@ -72,3 +72,24 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .detail-specialty-container {
+        .detail-specialty-body {
+            padding: 0;
+        }
+
+        .each-doctor {
+            flex-direction: column;
+
+            .dt-container-left {
+                width: 100%;
+                border-right: none;
+            }
+
+            .dt-container-right {
+                width: 100%;
+            }
+        }
+    }
+}

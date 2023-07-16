@@ -21,12 +21,21 @@ const HomePage = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
   };
+
+  let settingsMobile = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <div>
       <HomeHeader isShowBanner={true}/>
-      <Specialty settings={settings} />
-      <MedicalFacility settings={settings} />
-      <OutStandingDoctor settings={settings}/>
+      <Specialty settings={settings} settingsMobile={settingsMobile} />
+      <MedicalFacility settings={settings} settingsMobile={settingsMobile} />
+      <OutStandingDoctor settings={settings} settingsMobile={settingsMobile} />
       {/* <HandBook settings={settings} /> */}
       <About />
       <HomeFooter />

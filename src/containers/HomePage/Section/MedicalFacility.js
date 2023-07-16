@@ -26,13 +26,31 @@ const MedicalFacility = (props) => {
   
     return (
       <div className="section-share section-medical-facility" id="clinic">
-        <div className="section-container">
+        <div className="section-container pc">
           <div className="section-header">
             <span className="title-section">Cơ sở y tế nổi bật</span>
             <button className="btn-section">Xem thêm</button>
           </div>
           <div className="section-body">
             <Slider {...props.settings}>
+              {dataClinics && dataClinics.length > 0 && dataClinics.map((item, i) => (
+              <div className="section-customize clinic-child" key={i} onClick={() => handleViewDetailClinics(item)}>
+                <div className="bg-img section-medical-facility" style={{ backgroundImage: `url(${item.image})`}}  />
+                <div className="clinic-name">{item.name}</div>
+              </div>      
+              ))
+              }
+            </Slider>
+          </div>
+        </div>
+
+        <div className="section-container mobile">
+          <div className="section-header">
+            <span className="title-section">Cơ sở y tế nổi bật</span>
+            <button className="btn-section">Xem thêm</button>
+          </div>
+          <div className="section-body">
+            <Slider {...props.settingsMobile}>
               {dataClinics && dataClinics.length > 0 && dataClinics.map((item, i) => (
               <div className="section-customize clinic-child" key={i} onClick={() => handleViewDetailClinics(item)}>
                 <div className="bg-img section-medical-facility" style={{ backgroundImage: `url(${item.image})`}}  />
