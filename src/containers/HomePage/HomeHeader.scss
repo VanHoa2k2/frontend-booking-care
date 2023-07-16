@@ -262,10 +262,17 @@
       }
 
       .home-header-banner {
+            height: 340px;
+
+            .options {
+                  display: none !important;
+            }
+            
             .content-up {
                   .search {
                         width: 336px;
                         height: 40px;
+                        margin-top: 26px;
                   }
             }
       }
