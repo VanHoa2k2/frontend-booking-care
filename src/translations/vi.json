@@ -84,6 +84,10 @@
         "save": "Lưu phòng khám",
         "edit": "Lưu thay đổi"
     },
+    "manage-handbook": {
+        "save": "Lưu cẩm nang",
+        "edit": "Lưu thay đổi"
+    },
     "patient": {
         "detail-doctor": {
             "schedule": "Lịch khám",

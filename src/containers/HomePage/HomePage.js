@@ -22,6 +22,14 @@ const HomePage = () => {
     slidesToScroll: 4,
   };
 
+  let settingsHandbook = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+  };
+
   let settingsMobile = {
     dots: false,
     infinite: false,
@@ -36,7 +44,7 @@ const HomePage = () => {
       <Specialty settings={settings} settingsMobile={settingsMobile} />
       <MedicalFacility settings={settings} settingsMobile={settingsMobile} />
       <OutStandingDoctor settings={settings} settingsMobile={settingsMobile} />
-      {/* <HandBook settings={settings} /> */}
+      <HandBook settings={settingsHandbook}  settingsMobile={settingsMobile}/>
       <About />
       <HomeFooter />
     </div>

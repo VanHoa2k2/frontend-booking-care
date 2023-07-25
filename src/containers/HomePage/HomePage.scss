@@ -51,6 +51,27 @@
 
     .section-body {
         .section-customize {
+
+          &.section-customize-handbook {
+            display: flex !important;
+
+            &:hover .specialty-name  {
+                color: #45c3d2 !important;
+            }
+
+            .bg-img {
+              width: 50%;
+            }
+
+
+            .specialty-name {
+              width: 50%;
+              font-weight: 600;
+              font-size: 18px;
+              padding: 10px 8px;
+            }
+          }
+
           .bg-img {
             width: 278px;
             height: 150px;
@@ -75,10 +96,8 @@
             }
 
             &.section-handbook {
-              background-image: url(../../assets/handbook/phau-thuat-cat-tri.jpg);
+              
             }
-
-
           }
         }
       }

@@ -6,7 +6,8 @@ import { history } from "../redux";
 import { ToastContainer } from "react-toastify";
 
 import {
-  userIsAuthenticated,
+  userIsAuthenticatedAsAAdmin,
+  userIsAuthenticatedAsADoctor,
   userIsNotAuthenticated,
 } from "../hoc/authentication";
 
@@ -25,6 +26,7 @@ import Doctor from "../routes/Doctor"
 import VerifyEmail from "./Patient/VerifyEmail"
 import DetailSpecialty from "./Patient/Specialty/DetailSpecialty"
 import DetailClinic from "./Patient/Clinic/DetailClinic"
+import DetailHandbook from "./Patient/Handbook/DetailHandbook";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -59,16 +61,17 @@ class App extends Component {
                   />
                   <Route
                     path={path.SYSTEM}
-                    component={userIsAuthenticated(System)}
+                    component={userIsAuthenticatedAsAAdmin(System)}
                   />
                   <Route
                     path={"/doctor/"}
-                    component={userIsAuthenticated(Doctor)}
+                    component={userIsAuthenticatedAsADoctor(Doctor)}
                   />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DETAIL_DOCTOR} component={DetailDoctor}/> 
                   <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty}/> 
                   <Route path={path.DETAIL_CLINIC} component={DetailClinic}/> 
+                  <Route path={path.DETAIL_HANDBOOK} component={DetailHandbook}/> 
                   <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail}/> 
                 </Switch>
               </CustomScrollbars>

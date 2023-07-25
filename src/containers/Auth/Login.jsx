@@ -8,7 +8,7 @@ import { FormattedMessage } from "react-intl";
 import { handleLoginApi } from "../../services/userService";
 
 const Login = (props) => {
-  const [username, setUsername] = useState("hoidanit");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState("");
   const [isShowPassword, setIsShowPassword] = useState(false);

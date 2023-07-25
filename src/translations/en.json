@@ -71,6 +71,10 @@
         "save": "Save clinic",
         "edit": "Edit clinic"
     },
+    "manage-handbook": {
+        "save": "Save handbook",
+        "edit": "Edit handbook"
+    },
     "patient": {
         "detail-doctor": {
             "schedule": "Schedule",

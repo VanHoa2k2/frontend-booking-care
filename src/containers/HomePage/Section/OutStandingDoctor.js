@@ -10,6 +10,7 @@ import { withRouter } from 'react-router';
 const OutStandingDoctor = (props) => {
   let {language} = props
   const [arrDoctors, setArrDoctors] = useState([]);
+  console.log(props)
 
   useEffect(() => {
     setArrDoctors(props.topDoctorsRedux);

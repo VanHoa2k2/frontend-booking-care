@@ -1,43 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Slider from "react-slick";
+import * as actions from "../../../store/actions";
+import {LANGUAGES} from "../../../utils";
 import { FormattedMessage } from "react-intl";
+import { withRouter } from 'react-router';
+import { getAllHandbook } from "../../../services/userService";
 
 const HandBook = (props) => {
+  let {language} = props
+  console.log(props)
+  const [arrHandbooks, setArrHandbooks] = useState([]);
+
+  useEffect(() => {
+    const fetchApiGetAllHandbook = async() => {
+      let res = await getAllHandbook()
+
+      if(res && res.errCode === 0 ) {
+        setArrHandbooks(res.data ? res.data : [])
+      }
+    }
+    fetchApiGetAllHandbook()
+  }, []);
+
+  const handleViewDetailDoctor = (handbook) => {
+    props.history.push(`/detail-handbook/${handbook.id}`)
+  }
 
     return (
       <div className="section-share section-handbook">
-        <div className="section-container">
+        <div className="section-container pc">
           <div className="section-header">
             <span className="title-section">Cẩm nang</span>
             <button className="btn-section">Xem thêm</button>
           </div>
           <div className="section-body">
             <Slider {...props.settings}>
-              <div className="section-customize">
-                <div className="bg-img section-handbook" />
-                <div>Bệnh viện chợ rẫy 1</div>
-              </div>
-              <div className="section-customize">
-                <div className="bg-img section-handbook" />
-                <div>Bệnh viện chợ rẫy 2</div>
-              </div>
-              <div className="section-customize">
-                <div className="bg-img section-handbook" />
-                <div>Bệnh viện chợ rẫy 3</div>
-              </div>
-              <div className="section-customize">
-                <div className="bg-img section-handbook" />
-                <div>Bệnh viện chợ rẫy 4</div>
-              </div>
-              <div className="section-customize">
-                <div className="bg-img section-handbook" />
-                <div>Bệnh viện chợ rẫy 5</div>
-              </div>
-              <div className="section-customize">
-                <div className="bg-img section-handbook" />
-                <div>Bệnh viện chợ rẫy 6</div>
-              </div>
+            {arrHandbooks && arrHandbooks.length > 0 && arrHandbooks.map((item,i) => (
+            <div className="section-customize section-customize-handbook specialty-child" key={i}  onClick={() => handleViewDetailDoctor(item)}>
+              <div className="bg-img section-handbook" style={{ backgroundImage: `url(${item.image})`}} />
+              <div className="specialty-name">{item.name}</div>
+            </div>
+            ))}
+            </Slider>
+          </div>
+        </div>
+
+        <div className="section-container mobile">
+          <div className="section-header">
+            <span className="title-section">Cẩm nang</span>
+            <button className="btn-section">Xem thêm</button>
+          </div>
+          <div className="section-body">
+            <Slider {...props.settingsMobile}>
+            {arrHandbooks && arrHandbooks.length > 0 && arrHandbooks.map((item,i) => (
+            <div className="section-customize section-customize-handbook specialty-child" key={i}  onClick={() => handleViewDetailDoctor(item)}>
+              <div className="bg-img section-handbook" style={{ backgroundImage: `url(${item.image})`}} />
+              <div className="specialty-name">{item.name}</div>
+            </div>
+            ))}
             </Slider>
           </div>
         </div>
@@ -55,4 +76,4 @@ const mapStateToProps = (state) => {
     return {};
   };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(HandBook);
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HandBook));
