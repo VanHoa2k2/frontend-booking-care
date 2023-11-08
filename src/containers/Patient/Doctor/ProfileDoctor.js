@@ -7,15 +7,24 @@ import { LANGUAGES } from "../../../utils";
 import NumberFormat from "react-number-format";
 import _ from "lodash";
 import moment from "moment";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const ProfileDoctor = (props) => {
-  let { language, isShowDescription, dataTime, isShowLinkDetail, isShowPrice, doctorId } =
-    props;
+  let {
+    language,
+    isShowDescription,
+    dataTime,
+    isShowLinkDetail,
+    isShowPrice,
+    doctorId,
+  } = props;
   const [dataProfile, setDataProfile] = useState();
-  useEffect(async () => {
-    let data = await getInforDoctor(props.doctorId);
-    setDataProfile(data);
+  useEffect(() => {
+    const fetchInforDoctor = async () => {
+      let data = await getInforDoctor(props.doctorId);
+      setDataProfile(data);
+    };
+    fetchInforDoctor();
   }, [doctorId]);
 
   useEffect(() => {

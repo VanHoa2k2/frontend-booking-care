@@ -17,6 +17,7 @@ const DetailSpecialty = (props) => {
   const { language } = props;
   const [arrDoctorId, setArrDoctorId] = useState([]);
   const [dataDetailSpecialty, setDataDetailSpecialty] = useState({});
+
   const [listProvince, setListProvince] = useState([]);
   // const [valueProvince, setValueProvince] = useState("");
   // console.log(valueProvince);
@@ -41,7 +42,7 @@ const DetailSpecialty = (props) => {
           ) {
             let data = res.data;
             let arrDoctorId = [];
-            console.log(data);
+
             if (data && !_.isEmpty(res.data)) {
               let arr = data.doctorSpecialty;
               if (arr && arr.length > 0) {
@@ -53,16 +54,15 @@ const DetailSpecialty = (props) => {
 
             let dataProvince = resProvince.data;
 
-            if(dataProvince && dataProvince.length > 0) {
+            if (dataProvince && dataProvince.length > 0) {
               dataProvince.unshift({
                 createdAt: null,
                 keyMap: "ALL",
                 type: "PROVINCE",
                 valueEn: "All",
                 valueVi: "Toàn quốc",
-              })
+              });
             }
-
 
             setArrDoctorId(arrDoctorId);
             setDataDetailSpecialty(res.data);
@@ -76,20 +76,17 @@ const DetailSpecialty = (props) => {
     fetchDetailInforDoctor();
   }, []);
 
-  const handleOnchangeSelect = async(e) => {
+  const handleOnchangeSelect = async (e) => {
     if (props.match && props.match.params && props.match.params.id) {
       let id = props.match.params.id;
-      let location = e.target.value
+      let location = e.target.value;
 
       let res = await getAllDetailSpecialtyById({
         id: id,
         location: location,
       });
 
-      if (
-        res &&
-        res.errCode === 0
-      ) {
+      if (res && res.errCode === 0) {
         let data = res.data;
         let arrDoctorId = [];
 
@@ -105,7 +102,7 @@ const DetailSpecialty = (props) => {
         setDataDetailSpecialty(res.data);
       }
     }
-  }
+  };
 
   return (
     <div className="detail-specialty-container">
